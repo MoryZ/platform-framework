@@ -1,0 +1,3 @@
+com.old.silence.webmvc.autoconfigure.WebMvcAutoConfiguration
+com.old.silence.webmvc.autoconfigure.PlatformDataWebAutoConfiguration
+

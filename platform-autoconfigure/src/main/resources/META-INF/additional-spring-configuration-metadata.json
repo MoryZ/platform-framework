@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "silence.minio",
+      "type": "com.old.silence.autoconfigure.minio.MinioProperties",
+      "sourceType": "com.old.silence.autoconfigure.minio.MinioProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.datasource.routings",
+      "type": "java.util.Map<java.lang.String,org.springframework.boot.autoconfigure.jdbc.DataSourceProperties>",
+      "description": "Dynamic DataSource properties.",
+      "sourceType": "com.old.silence.autoconfigure.jdbc.RoutingDataSourceProperties"
+    },
+    {
+      "name": "silence.minio.host",
+      "type": "java.lang.String",
+      "description": "Direct project configuration ID for the current project."
+    },
+    {
+      "name": "silence.minio.accessKey",
+      "type": "java.lang.String",
+      "description": "ak for minio."
+    },
+    {
+      "name": "silence.minio.secretKey",
+      "type": "java.lang.String",
+      "description": "sk for minio."
+    },
+    {
+      "name": "silence.minio.bucket",
+      "type": "java.lang.String",
+      "description": "bucket name for the minio."
+    }
+  ]
+}

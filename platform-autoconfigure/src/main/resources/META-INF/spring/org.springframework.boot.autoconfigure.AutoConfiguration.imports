@@ -1,0 +1,8 @@
+com.old.silence.autoconfigure.batch.CustomBatchAutoConfiguration
+com.old.silence.autoconfigure.context.ApplicationMulticasterAutoConfiguration
+com.old.silence.autoconfigure.context.CustomMessageSourceAutoConfiguration
+com.old.silence.autoconfigure.minio.MinioAutoConfiguration
+com.old.silence.autoconfigure.jdbc.PlatformJdbcTemplateAutoConfiguration
+com.old.silence.autoconfigure.jdbc.RoutingDataSourceAutoConfiguration
+com.old.silence.autoconfigure.scheduling.SchedulingAutoConfiguration
+com.old.silence.autoconfigure.validation.CustomValidationAutoConfiguration

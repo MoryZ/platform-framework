@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "silence.system.identifier",
+      "type": "java.lang.String",
+      "description": "System identifier"
+    }
+  ]
+}
