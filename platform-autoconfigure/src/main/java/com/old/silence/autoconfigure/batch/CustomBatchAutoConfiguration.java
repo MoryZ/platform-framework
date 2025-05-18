@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 
 /**
- * @author moryzang
+ * @author murrayZhang
  */
 @AutoConfiguration
 @ConditionalOnBean(JobRegistry.class)

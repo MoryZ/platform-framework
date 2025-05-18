@@ -11,7 +11,9 @@ import org.springframework.context.annotation.Configuration;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.old.silence.dto.TreeDto;
 import com.old.silence.json.data.PageJacksonModule;
+import com.old.silence.json.data.TreeNodeJacksonModule;
 
 @AutoConfiguration(before = JacksonAutoConfiguration.class)
 public class CustomerJacksonAutoConfiguration {
@@ -34,13 +36,19 @@ public class CustomerJacksonAutoConfiguration {
     }
 
     @Configuration(proxyBeanMethods = false)
-    @ConditionalOnClass({ Module.class, Page.class, OrderItem.class})
     @ConditionalOnProperty(value = "platform.jackson.data.enabled", havingValue = "true", matchIfMissing = true)
     static class DataJacksonConfiguration{
 
         @Bean
+        @ConditionalOnClass({ Module.class, Page.class, OrderItem.class})
         PageJacksonModule pageJacksonModule(){
             return new PageJacksonModule();
+        }
+
+        @Bean
+        @ConditionalOnClass({ Module.class, TreeDto.class})
+        TreeNodeJacksonModule treeNodeJacksonModule(){
+            return new TreeNodeJacksonModule();
         }
     }
 }

@@ -35,7 +35,7 @@ import com.old.silence.core.util.CollectionUtils;
 import com.zaxxer.hikari.HikariDataSource;
 
 /**
- * @author moryzang
+ * @author murrayZhang
  */
 @AutoConfiguration(before = {DataSourceAutoConfiguration.class, SqlInitializationAutoConfiguration.class})
 @ConditionOnPropertyPrefix("spring.datasource.routing")

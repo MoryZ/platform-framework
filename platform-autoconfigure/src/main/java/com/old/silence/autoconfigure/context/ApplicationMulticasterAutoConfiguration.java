@@ -11,7 +11,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.util.ErrorHandler;
 
 /**
- * @author moryzang
+ * @author murrayZhang
  */
 @AutoConfiguration
 public class ApplicationMulticasterAutoConfiguration {

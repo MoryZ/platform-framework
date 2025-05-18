@@ -10,11 +10,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * @author moryzang
+ * @author murrayZhang
  */
 public class PageImpl<T> implements IPage<T> {
     // 数据列表
-    private List<T> records = Collections.emptyList();
+    private List<T> records;
     // 当前页码（从1开始）
     private long current;
     // 每页数量

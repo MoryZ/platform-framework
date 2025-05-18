@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author moryzang
+ * @author murrayZhang
  */
 @ConfigurationProperties(prefix = "spring.datasource")
 public class RoutingDataSourceProperties {

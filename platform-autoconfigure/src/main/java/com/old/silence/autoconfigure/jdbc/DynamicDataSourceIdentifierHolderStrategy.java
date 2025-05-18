@@ -1,7 +1,7 @@
 package com.old.silence.autoconfigure.jdbc;
 
 /**
- * @author moryzang
+ * @author murrayZhang
  */
 public interface DynamicDataSourceIdentifierHolderStrategy {
 

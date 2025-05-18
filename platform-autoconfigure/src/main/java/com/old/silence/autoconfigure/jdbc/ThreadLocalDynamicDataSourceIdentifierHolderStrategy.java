@@ -3,7 +3,7 @@ package com.old.silence.autoconfigure.jdbc;
 import java.util.Objects;
 
 /**
- * @author moryzang
+ * @author murrayZhang
  */
 class ThreadLocalDynamicDataSourceIdentifierHolderStrategy implements DynamicDataSourceIdentifierHolderStrategy {
 
