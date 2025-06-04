@@ -65,6 +65,7 @@ public class PageJacksonModule extends Module{
             return this;
         }
 
+        @JsonProperty("total")
         @Override
         public long getTotal() {
             return delegate.getTotal();
