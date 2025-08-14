@@ -9,7 +9,6 @@ import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,7 +69,7 @@ public class ApiResultHandler implements ResponseBodyAdvice<Object> {
             out = body;
         } else if (body instanceof ErrorCoded) {
             out = body;
-        } else if (body instanceof String) {
+        } else if (body instanceof String || body == null) {
             ApiResult result = ApiResult.success(body);
             try {
                 out = mapper.writeValueAsString(result);
