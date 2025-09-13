@@ -74,7 +74,7 @@ public class SortHandlerMethodArgumentResolver implements HandlerMethodArgumentR
             // 驼峰转下划线（假设需要转换）
             String dbColumn = camelToUnderline(column);
 
-            orderItems.add(new OrderItem(dbColumn, asc));
+            orderItems.add(asc? OrderItem.asc(dbColumn): OrderItem.desc(dbColumn));
         }
         return orderItems;
     }
