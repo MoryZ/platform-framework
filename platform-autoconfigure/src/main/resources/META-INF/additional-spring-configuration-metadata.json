@@ -1,7 +1,7 @@
 {
   "groups": [
     {
-      "name": "silence.minio",
+      "name": "platform.minio",
       "type": "com.old.silence.autoconfigure.minio.MinioProperties",
       "sourceType": "com.old.silence.autoconfigure.minio.MinioProperties"
     }
@@ -14,24 +14,28 @@
       "sourceType": "com.old.silence.autoconfigure.jdbc.RoutingDataSourceProperties"
     },
     {
-      "name": "silence.minio.host",
+      "name": "platform.minio.host",
       "type": "java.lang.String",
-      "description": "Direct project configuration ID for the current project."
+      "description": "minio host.",
+      "sourceType": "com.old.silence.autoconfigure.minio.MinioProperties"
     },
     {
-      "name": "silence.minio.accessKey",
+      "name": "platform.minio.accessKey",
       "type": "java.lang.String",
-      "description": "ak for minio."
+      "description": "ak for minio.",
+      "sourceType": "com.old.silence.autoconfigure.minio.MinioProperties"
     },
     {
-      "name": "silence.minio.secretKey",
+      "name": "platform.minio.secretKey",
       "type": "java.lang.String",
-      "description": "sk for minio."
+      "description": "sk for minio.",
+      "sourceType": "com.old.silence.autoconfigure.minio.MinioProperties"
     },
     {
-      "name": "silence.minio.bucket",
+      "name": "platform.minio.bucket",
       "type": "java.lang.String",
-      "description": "bucket name for the minio."
+      "description": "bucket name for the minio.",
+      "sourceType": "com.old.silence.autoconfigure.minio.MinioProperties"
     }
   ]
 }

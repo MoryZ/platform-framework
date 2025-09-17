@@ -4,11 +4,11 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,7 +52,7 @@ public class ApiResultHandler implements ResponseBodyAdvice<Object> {
      * @return boolean
      */
     @Override
-    public boolean supports(@NotNull MethodParameter returnType, @NotNull Class converterType) {
+    public boolean supports(@NonNull MethodParameter returnType, @NonNull Class converterType) {
         AnnotatedElement element = returnType.getAnnotatedElement();
         return ANNOTATIONS.stream().anyMatch(anno -> anno.isAnnotation() &&
                 element.isAnnotationPresent(anno));
@@ -61,7 +61,9 @@ public class ApiResultHandler implements ResponseBodyAdvice<Object> {
 
 
     @Override
-    public Object beforeBodyWrite(Object body, @NotNull MethodParameter returnType, @NotNull MediaType selectedContentType, @NotNull Class selectedConverterType, @NotNull ServerHttpRequest request, @NotNull ServerHttpResponse response) {
+    public Object beforeBodyWrite(Object body, @NonNull MethodParameter returnType, @NonNull MediaType selectedContentType,
+                                  @NonNull Class selectedConverterType, @NonNull ServerHttpRequest request,
+                                  @NonNull ServerHttpResponse response) {
         Object out;
         ObjectMapper mapper = mapperThreadLocal.get();
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
