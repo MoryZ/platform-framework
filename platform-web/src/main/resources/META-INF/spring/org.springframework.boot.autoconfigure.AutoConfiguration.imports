@@ -1,0 +1,3 @@
+com.old.silence.web.autoconfigure.CustomHttpMessageConvertersAutoConfiguration
+com.old.silence.web.autoconfigure.HttpClient5AutoConfiguration
+com.old.silence.web.autoconfigure.WebClientAutoConfiguration

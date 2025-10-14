@@ -1,6 +1,6 @@
 package com.old.silence.validation.group;
 
-import javax.validation.groups.Default;
+import jakarta.validation.groups.Default;
 
 public interface BulkCreationValidation extends Default {
 }

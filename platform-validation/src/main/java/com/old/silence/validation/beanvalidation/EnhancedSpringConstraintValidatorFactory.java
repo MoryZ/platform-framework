@@ -1,6 +1,7 @@
 package com.old.silence.validation.beanvalidation;
 
-import javax.validation.ConstraintValidator;
+
+import jakarta.validation.ConstraintValidator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

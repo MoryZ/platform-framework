@@ -1,7 +1,8 @@
 package com.old.silence.webmvc.data;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 import java.util.Optional;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestAttributes;
@@ -27,7 +28,7 @@ public class UserHeaderAuditorAware implements UserContextAware<String> {
             return this.getDefaultAuditorAwareName();
         } else {
             HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
-            String headerUsername = request.getHeader("X-Silence-User-Header");
+            String headerUsername = request.getHeader("X-Platform-User-Header");
             return StringUtils.isBlank(headerUsername) ? this.getDefaultAuditorAwareName() : Optional.of(headerUsername);
         }
     }

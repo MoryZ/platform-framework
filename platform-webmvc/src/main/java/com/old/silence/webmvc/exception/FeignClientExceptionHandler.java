@@ -2,13 +2,13 @@ package com.old.silence.webmvc.exception;
 
 import feign.FeignException;
 import feign.FeignException.FeignClientException;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.ByteBuffer;
 import java.util.Optional;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.http.HttpStatus;

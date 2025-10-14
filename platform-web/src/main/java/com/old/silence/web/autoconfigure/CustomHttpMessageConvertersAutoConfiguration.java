@@ -33,26 +33,12 @@ import com.old.silence.web.autoconfigure.CustomHttpMessageConvertersAutoConfigur
 )
 public class CustomHttpMessageConvertersAutoConfiguration {
 
-    @Bean
-    HttpMessageConverters messageConverters(ObjectProvider<HttpMessageConverter<?>> converters) {
-        return new CustomHttpMessageConverters(converters.orderedStream().collect(Collectors.toList()));
+    public CustomHttpMessageConvertersAutoConfiguration() {
     }
 
-    @Configuration(proxyBeanMethods = false)
-    @ConditionalOnClass({StringHttpMessageConverter.class})
-    @ConditionalOnMissingBean({StringHttpMessageConverter.class})
-    protected static class StringHttpMessageConverterConfiguration {
-        protected StringHttpMessageConverterConfiguration() {
-        }
-
-        @Bean
-        StringHttpMessageConverter stringHttpMessageConverter(Environment environment) {
-            Encoding encoding = Binder.get(environment).bindOrCreate("server.servlet.encoding", Encoding.class);
-            StringHttpMessageConverter converter = new StringHttpMessageConverter(encoding.getCharset());
-            converter.setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_PLAIN, MediaType.TEXT_HTML));
-            converter.setWriteAcceptCharset(false);
-            return converter;
-        }
+    @Bean
+    HttpMessageConverters messageConverters(ObjectProvider<HttpMessageConverter<?>> converters) {
+        return new HttpMessageConverters(converters.orderedStream().toArray(HttpMessageConverter[]::new));
     }
 
     static class NotReactiveWebApplicationCondition extends NoneNestedConditions {
@@ -64,6 +50,28 @@ public class CustomHttpMessageConvertersAutoConfiguration {
                 type = ConditionalOnWebApplication.Type.REACTIVE
         )
         static class ReactiveWebApplication {
+            ReactiveWebApplication() {}
         }
     }
+
+    @Configuration(
+            proxyBeanMethods = false
+    )
+    @ConditionalOnClass({StringHttpMessageConverter.class})
+    @ConditionalOnMissingBean({StringHttpMessageConverter.class})
+    protected static class StringHttpMessageConverterConfiguration {
+        protected StringHttpMessageConverterConfiguration() {}
+
+        @Bean
+        StringHttpMessageConverter stringHttpMessageConverter(Environment environment) {
+            Encoding encoding = (Encoding) Binder.get(environment).bindOrCreate("spring.http.encoding", Encoding.class);
+            StringHttpMessageConverter converter = new StringHttpMessageConverter(encoding.getCharset());
+            converter.setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_PLAIN, MediaType.TEXT_HTML));
+            converter.setWriteAcceptCharset(false);
+            return converter;
+        }
+
+    }
+
+
 }

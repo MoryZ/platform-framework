@@ -88,7 +88,7 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    @ConditionalOnProperty(name = "logging.logback.silence-tracing-output-enabled")
+    @ConditionalOnProperty(name = "logging.logback.platform-tracing-output-enabled")
     FilterRegistrationBean<MdcTraceIdFilter> mdcTraceIdFilter() {
 
         FilterRegistrationBean<MdcTraceIdFilter> registration = new FilterRegistrationBean<>(new MdcTraceIdFilter());
@@ -169,7 +169,7 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
     public static class PlatformTomcatWebServerFactoryCustomizerConfiguration {
 
         @Bean
-        PlatformTomcatWebServerFactoryCustomizer silenceTomcatWebServerFactoryCustomizer() {
+        PlatformTomcatWebServerFactoryCustomizer platformTomcatWebServerFactoryCustomizer() {
             return new PlatformTomcatWebServerFactoryCustomizer();
         }
     }

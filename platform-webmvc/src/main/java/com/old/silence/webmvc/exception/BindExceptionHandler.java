@@ -1,7 +1,8 @@
 package com.old.silence.webmvc.exception;
 
+import jakarta.validation.ConstraintViolation;
+
 import java.util.Optional;
-import javax.validation.ConstraintViolation;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.MethodInvocationException;

@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMessage;
 import org.springframework.http.HttpRequest;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
@@ -53,11 +53,11 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
 
         ClientHttpResponse response = execution.execute(request, body);
         if (logger.isDebugEnabled()) {
-            response = new BufferingClientHttpResponseWrapper((ClientHttpResponse)response);
-            this.logResponse((ClientHttpResponse)response);
+            response = new BufferingClientHttpResponseWrapper((ClientHttpResponse) response);
+            this.logResponse((ClientHttpResponse) response);
         }
 
-        return (ClientHttpResponse)response;
+        return (ClientHttpResponse) response;
     }
 
     private void logRequest(HttpRequest request, byte[] body) {
@@ -77,9 +77,9 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
 
     private void logResponse(ClientHttpResponse response) throws IOException {
         if (StringUtils.isEmpty(response.getStatusText())) {
-            logger.debug("http-response << \"{}\"", response.getRawStatusCode());
+            logger.debug("http-response << \"{}\"", response.getStatusCode().value());
         } else {
-            logger.debug("http-response << \"{} {}\"", response.getRawStatusCode(), response.getStatusText());
+            logger.debug("http-response << \"{} {}\"", response.getStatusCode().value(), response.getStatusText());
         }
 
         int length;
@@ -89,7 +89,7 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
             String[] var2 = DEFAULT_OUTPUT_RESPONSE_HEADER;
             int var3 = var2.length;
 
-            for(length = 0; length < var3; ++length) {
+            for (length = 0; length < var3; ++length) {
                 String headerName = var2[length];
                 List<String> values = response.getHeaders().get(headerName);
                 if (CollectionUtils.isNotEmpty(values)) {
@@ -111,9 +111,9 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
     private static void logHeader(HttpMessage message, String direction) {
         Iterator var2 = message.getHeaders().entrySet().iterator();
 
-        while(var2.hasNext()) {
-            Map.Entry<String, List<String>> entry = (Map.Entry)var2.next();
-            logHeader((String)entry.getKey(), (List)entry.getValue(), direction);
+        while (var2.hasNext()) {
+            Map.Entry<String, List<String>> entry = (Map.Entry) var2.next();
+            logHeader((String) entry.getKey(), (List) entry.getValue(), direction);
         }
 
     }
@@ -127,18 +127,15 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
 
     private static class BufferingClientHttpResponseWrapper implements ClientHttpResponse {
         private final ClientHttpResponse response;
+
         private byte[] body;
 
         BufferingClientHttpResponseWrapper(ClientHttpResponse response) {
             this.response = response;
         }
 
-        public HttpStatus getStatusCode() throws IOException {
+        public HttpStatusCode getStatusCode() throws IOException {
             return this.response.getStatusCode();
-        }
-
-        public int getRawStatusCode() throws IOException {
-            return this.response.getRawStatusCode();
         }
 
         public String getStatusText() throws IOException {
@@ -150,10 +147,8 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
         }
 
         public InputStream getBody() throws IOException {
-            if (this.body == null) {
-                this.body = StreamUtils.copyToByteArray(this.response.getBody());
-            }
-
+            if (this.body == null)
+                this.body = this.response.getBody().readAllBytes();
             return new ByteArrayInputStream(this.body);
         }
 
@@ -161,4 +156,4 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
             this.response.close();
         }
     }
-    }
+}

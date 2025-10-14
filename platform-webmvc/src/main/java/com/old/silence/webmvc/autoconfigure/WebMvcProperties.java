@@ -2,7 +2,7 @@ package com.old.silence.webmvc.autoconfigure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "silence.mvc")
+@ConfigurationProperties(prefix = "platform.mvc")
 public class WebMvcProperties {
 
     private String[] loggingPathPatterns = { "/*" };

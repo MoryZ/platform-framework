@@ -26,7 +26,7 @@ public class PlatformJdbcTemplateAutoConfiguration {
 
     @Bean
     @Primary
-    PlatformJdbcTemplate silenceJdbcTemplate(DataSource dataSource, JdbcProperties properties) {
+    PlatformJdbcTemplate platformJdbcTemplate(DataSource dataSource, JdbcProperties properties) {
         PlatformJdbcTemplate jdbcTemplate = new PlatformJdbcTemplate(dataSource);
         JdbcProperties.Template template = properties.getTemplate();
         jdbcTemplate.setFetchSize(template.getFetchSize());

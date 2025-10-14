@@ -1,5 +1,7 @@
 package com.old.silence.webmvc.exception;
 
+import jakarta.validation.ConstraintViolationException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -7,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.validation.ConstraintViolationException;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.support.MessageSourceAccessor;

@@ -1,6 +1,6 @@
 package com.old.silence.web.autoconfigure;
 
-import org.apache.http.client.HttpClient;
+import org.apache.hc.client5.http.classic.HttpClient;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -13,7 +13,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import com.old.silence.web.client.LoggingRequestInterceptor;
 
 @AutoConfiguration(
-        after = {HttpClientAutoConfiguration.class}
+        after = {HttpClient5AutoConfiguration.class}
 )
 public class WebClientAutoConfiguration {
 
