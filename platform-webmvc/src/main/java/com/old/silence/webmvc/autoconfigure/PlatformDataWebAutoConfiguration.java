@@ -37,7 +37,7 @@ public class PlatformDataWebAutoConfiguration implements WebMvcConfigurer {
             name = {"platform.data.web.user.header-auditor-enabled"},
             matchIfMissing = true
     )
-    UserContextAware<String> userContextAware() {
+    UserContextAware<String> umHeaderAuditorAware() {
         return new UserHeaderAuditorAware(this.defaultAuditor);
     }
 
