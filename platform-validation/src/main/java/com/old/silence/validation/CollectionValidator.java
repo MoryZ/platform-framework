@@ -16,14 +16,17 @@ public class CollectionValidator implements SmartValidator {
         this.validator = validator;
     }
 
+    @Override
     public boolean supports(Class<?> clazz) {
         return Collection.class.isAssignableFrom(clazz);
     }
 
+    @Override
     public void validate(Object target, Errors errors) {
         this.validate(target, errors, ArrayUtils.EMPTY_OBJECT_ARRAY);
     }
 
+    @Override
     public void validate(Object target, Errors errors, Object... validationHints) {
         Collection<?> collection = (Collection)target;
         Iterator<?> iterator = collection.iterator();

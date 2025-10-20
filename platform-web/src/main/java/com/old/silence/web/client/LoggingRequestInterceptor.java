@@ -28,7 +28,7 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
     private static final int DEFAULT_MAX_PAYLOAD_LENGTH = 1024;
     private boolean includeRequestHeader = false;
     private boolean includeResponseHeader = false;
-    private int maxPayloadLength = 1024;
+    private int maxPayloadLength = DEFAULT_MAX_PAYLOAD_LENGTH;
 
     public LoggingRequestInterceptor() {
     }
@@ -46,6 +46,7 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
         this.maxPayloadLength = maxPayloadLength;
     }
 
+    @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
         if (logger.isDebugEnabled()) {
             this.logRequest(request, body);
@@ -134,24 +135,30 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
             this.response = response;
         }
 
+        @Override
         public HttpStatusCode getStatusCode() throws IOException {
             return this.response.getStatusCode();
         }
 
+        @Override
         public String getStatusText() throws IOException {
             return this.response.getStatusText();
         }
 
+        @Override
         public HttpHeaders getHeaders() {
             return this.response.getHeaders();
         }
 
+        @Override
         public InputStream getBody() throws IOException {
-            if (this.body == null)
+            if (this.body == null) {
                 this.body = this.response.getBody().readAllBytes();
+            }
             return new ByteArrayInputStream(this.body);
         }
 
+        @Override
         public void close() {
             this.response.close();
         }

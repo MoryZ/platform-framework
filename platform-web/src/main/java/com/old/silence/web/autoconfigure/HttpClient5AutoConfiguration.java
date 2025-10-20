@@ -96,21 +96,25 @@ public class HttpClient5AutoConfiguration {
 
     @PreDestroy
     public void destroy() {
-        if (this.httpClient5 != null)
+        if (this.httpClient5 != null) {
             this.httpClient5.close(CloseMode.GRACEFUL);
+        }
     }
 
     static class DisabledValidationTrustManager implements X509TrustManager {
+        @Override
         public void checkClientTrusted(X509Certificate[] x509Certificates, String s) {}
 
+        @Override
         public void checkServerTrusted(X509Certificate[] x509Certificates, String s) {}
 
+        @Override
         public X509Certificate[] getAcceptedIssuers() {
             return null;
         }
     }
 
-    public static interface HttpClientBuilderCustomizer {
+    public interface HttpClientBuilderCustomizer {
         void customize(HttpClientBuilder param1HttpClientBuilder);
     }
 }

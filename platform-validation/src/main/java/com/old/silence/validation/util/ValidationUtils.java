@@ -51,7 +51,7 @@ public final class ValidationUtils {
         } else {
             errorCode = DEFAULT_ERROR_CODE;
             Map<String, Object> attributes = constraintDescriptor.getAttributes();
-            Object errorCodeAttribute = attributes.get("errorCode");
+            Object errorCodeAttribute = attributes.get(ERROR_CODE_ATTRIBUTE);
             if (errorCodeAttribute instanceof ErrorCoded) {
                 errorCode = (ErrorCoded)errorCodeAttribute;
             }

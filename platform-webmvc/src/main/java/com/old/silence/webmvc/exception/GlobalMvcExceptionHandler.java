@@ -23,6 +23,7 @@ public class GlobalMvcExceptionHandler extends ResponseEntityExceptionHandler {
         this.systemIdentifier = systemIdentifier;
     }
 
+    @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException e, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         return (ResponseEntity)handleThrowable((Throwable)e, request);
     }
@@ -33,12 +34,15 @@ public class GlobalMvcExceptionHandler extends ResponseEntityExceptionHandler {
         return exceptionHandler.handle(t, request, this.systemIdentifier);
     }
 
+    @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception e, Object body, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         String message = e.getMessage();
-        if (status.is5xxServerError())
+        if (status.is5xxServerError()) {
             return (ResponseEntity)handleThrowable(e, request);
-        if (StringUtils.isNotEmpty(message))
+        }
+        if (StringUtils.isNotEmpty(message)) {
             this.logger.warn(message);
+        }
         return super.handleExceptionInternal(e, body, headers, status, request);
     }
 

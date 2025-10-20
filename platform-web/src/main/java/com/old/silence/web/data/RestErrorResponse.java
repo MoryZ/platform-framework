@@ -34,6 +34,6 @@ public class RestErrorResponse {
     }
 
     public static ResponseEntity<RestErrorResponse> createErrorResponseEntity(String code, String message, HttpStatus httpStatus) {
-        return new ResponseEntity(new RestErrorResponse(code, message), httpStatus);
+        return new ResponseEntity<>(new RestErrorResponse(code, message), httpStatus);
     }
 }

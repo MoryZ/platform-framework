@@ -31,15 +31,15 @@ public class PlatformHttpClientProperties {
 
     public static final Duration DEFAULT_CONNECTION_REQUEST_TIMEOUT = Duration.ofMinutes(3L);
 
-    private boolean disableSslValidation = false;
+    private boolean disableSslValidation = DEFAULT_DISABLE_SSL_VALIDATION;
 
-    private int maxConnections = 200;
+    private int maxConnections = DEFAULT_MAX_CONNECTIONS;
 
-    private int maxConnectionsPerRoute = 50;
+    private int maxConnectionsPerRoute = DEFAULT_MAX_CONNECTIONS_PER_ROUTE;
 
     private Duration timeToLive = DEFAULT_TIME_TO_LIVE;
 
-    private boolean followRedirects = true;
+    private boolean followRedirects = DEFAULT_FOLLOW_REDIRECTS;
 
     private Duration connectionTimeout = DEFAULT_CONNECTION_TIMEOUT;
 

@@ -20,17 +20,6 @@ public interface EnumMessageSourceResolvable extends MessageSourceResolvable, Se
 
     ConcurrentMap<EnumMessageSourceResolvable, String> MESSAGE_CODE_NAME_CACHE = new ConcurrentHashMap<>(); // NOSONAR
 
-    String name();
-
-    @Override
-    default String[] getCodes() {
-
-        String code = MESSAGE_CODE_NAME_CACHE.computeIfAbsent(this,
-                messageCode -> StringUtils.substringBefore(ClassUtils.getShortName(messageCode.getClass()), ".") + '.'
-                        + CaseUtils.toCamelCase(messageCode.name(), true, '_'));
-        return new String[] { code };
-    }
-
     default MessageSourceResolvable toResolvableWithArguments(Collection<Object> args) {
         return CollectionUtils.isEmpty(args) ? this : toResolvableWithArguments(args.toArray());
     }
@@ -49,4 +38,15 @@ public interface EnumMessageSourceResolvable extends MessageSourceResolvable, Se
         }
         return new DefaultMessageSourceResolvable(getCodes(), args, null);
     }
+
+    @Override
+    default String[] getCodes() {
+
+        String code = MESSAGE_CODE_NAME_CACHE.computeIfAbsent(this,
+                messageCode -> StringUtils.substringBefore(ClassUtils.getShortName(messageCode.getClass()), ".") + '.'
+                        + CaseUtils.toCamelCase(messageCode.name(), true, '_'));
+        return new String[] { code };
+    }
+
+    String name();
 }

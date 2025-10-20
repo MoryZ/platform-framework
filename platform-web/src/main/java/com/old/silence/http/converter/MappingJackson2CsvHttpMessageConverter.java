@@ -68,15 +68,18 @@ public class MappingJackson2CsvHttpMessageConverter extends AbstractJackson2Http
         this.includeHeader = includeHeader;
     }
 
+    @Override
     public void setDefaultCharset(Charset defaultCharset) {
         super.setDefaultCharset((Charset) Objects.requireNonNull(defaultCharset));
     }
 
+    @Override
     public Object read(Type type, @Nullable Class<?> contextClass, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
         JavaType javaType = this.getJavaType(type, contextClass);
         return this.readJavaTypeInternal(javaType, inputMessage);
     }
 
+    @Override
     protected Object readInternal(Class<?> clazz, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
         JavaType javaType = this.getJavaType(clazz, (Class)null);
         return this.readJavaTypeInternal(javaType, inputMessage);
@@ -133,6 +136,7 @@ public class MappingJackson2CsvHttpMessageConverter extends AbstractJackson2Http
         }
     }
 
+    @Override
     protected void writeInternal(Object object, Type type, HttpOutputMessage outputMessage) throws IOException, HttpMessageNotWritableException {
         HttpHeaders headers = outputMessage.getHeaders();
         Class<?> schemaType = this.getSchemaType(type);
@@ -186,6 +190,8 @@ public class MappingJackson2CsvHttpMessageConverter extends AbstractJackson2Http
             throw new HttpMessageNotWritableException("Could not write JSON: " + var17.getOriginalMessage(), var17);
         }
     }
+
+    @Override
     protected Charset getCharset(@Nullable MediaType contentType) {
         return (Charset)Optional.ofNullable(contentType).map(MimeType::getCharset).orElse(this.getDefaultCharset());
     }
@@ -252,10 +258,12 @@ public class MappingJackson2CsvHttpMessageConverter extends AbstractJackson2Http
             this.type = type;
             this.view = view;
         }
+        @Override
         public int hashCode() {
             return Objects.hash(new Object[]{this.type, this.view});
         }
 
+        @Override
         public boolean equals(Object obj) {
             if (this == obj) {
                 return true;

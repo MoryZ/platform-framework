@@ -22,6 +22,7 @@ class CustomHttpMessageConverters extends HttpMessageConverters {
         super(additionalConverters);
     }
 
+    @Override
     protected List<HttpMessageConverter<?>> postProcessConverters(List<HttpMessageConverter<?>> converters) {
         Set<Class<?>> converterTypes = new HashSet();
         Iterator<HttpMessageConverter<?>> iterator = converters.iterator();
