@@ -12,7 +12,7 @@
     <springProperty name="tracingOutputEnabled" scope="context" source="logging.logback.tracing-output-enabled" defaultValue="true"/>
     <springProperty name="maskPatterns" scope="context" source="logging.logback.mask-patterns" defaultValue="none"/>
 
-    <conversionRule conversionWord="mask" converterClass="com.old.silence.core.logging.MaskingConverter"/>
+    <conversionRule conversionWord="mask" class="com.old.silence.core.logging.MaskingConverter"/>
 
     <!-- 修正1：使用正确的条件判断语法 -->
     <if condition='property("codeLineOutputEnabled").equals("true")'>
