@@ -12,8 +12,10 @@ import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoCon
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import com.old.silence.core.security.TenantContextAware;
 import com.old.silence.core.security.UserContextAware;
 import com.old.silence.web.data.SortHandlerMethodArgumentResolver;
+import com.old.silence.webmvc.data.HttpHeaderTenantContextAware;
 import com.old.silence.webmvc.data.UserHeaderAuditorAware;
 
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
@@ -39,6 +41,12 @@ public class PlatformDataWebAutoConfiguration implements WebMvcConfigurer {
     )
     UserContextAware<String> umHeaderAuditorAware() {
         return new UserHeaderAuditorAware(this.defaultAuditor);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    TenantContextAware<String> httpHeaderTenantContextAware() {
+        return new HttpHeaderTenantContextAware();
     }
 
 }
