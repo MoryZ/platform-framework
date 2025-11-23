@@ -25,6 +25,7 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-extension</artifactId>
             <version>${mybatis-plus-boot-starter.version}</version>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
