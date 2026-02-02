@@ -1,0 +1,2 @@
+com.old.silence.json.CustomerJacksonAutoConfiguration
+com.old.silence.csv.CsvMapperAutoConfiguration

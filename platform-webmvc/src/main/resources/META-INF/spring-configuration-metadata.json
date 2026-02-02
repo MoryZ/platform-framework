@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "platform.system.identifier",
+      "type": "java.lang.String",
+      "description": "System identifier"
+    }
+  ]
+}

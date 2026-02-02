@@ -1,0 +1,72 @@
+<included>
+    <include resource="platform-logging-defaults.xml"/>
+
+    <springProperty name="loggingFilename" scope="context" source="logging.file.name" />
+    <springProperty name="applicationName" scope="context" source="spring.application.name" />
+    <springProperty name="asyncFileEnabled" scope="context" source="logging.logback.async.enabled" defaultValue="true"/>
+    <springProperty name="asyncQueueSize" scope="context" source="logging.logback.async.queue-size" defaultValue="8192"/>
+    <springProperty name="asyncDiscardingThreshold" scope="context" source="logging.logback.async.discarding-threshold" defaultValue="0"/>
+    <springProperty name="asyncIncludeCallerData" scope="context" source="logging.logback.async.include-caller-data" defaultValue="true"/>
+    <springProperty name="codeLineOutputEnabled" scope="context" source="logging.logback.code-line-output-enabled" defaultValue="false"/>
+    <springProperty name="platformTracingOutputEnabled" scope="context" source="logging.logback.platform-tracing-output-enabled" defaultValue="false"/>
+    <springProperty name="tracingOutputEnabled" scope="context" source="logging.logback.tracing-output-enabled" defaultValue="true"/>
+    <springProperty name="maskPatterns" scope="context" source="logging.logback.mask-patterns" defaultValue="none"/>
+
+    <conversionRule conversionWord="mask" class="com.old.silence.core.logging.MaskingConverter"/>
+
+    <!-- 修正1：使用正确的条件判断语法 -->
+    <if condition='property("codeLineOutputEnabled").equals("true")'>
+        <then>
+            <property name="CODE_LINE_PATTERN" value="%logger{36}:%line"/>
+        </then>
+        <else>
+            <property name="CODE_LINE_PATTERN" value="%logger{36}"/>
+        </else>
+    </if>
+
+    <!-- 修正2：简化追踪输出配置 -->
+    <if condition='property("platformTracingOutputEnabled").equals("true")'>
+        <then>
+            <property name="TRACING_PATTERN" value="[TraceId: %X{platform.traceId}] "/>
+        </then>
+        <else>
+            <property name="TRACING_PATTERN" value="&#x200B;"/>
+        </else>
+    </if>
+
+    <if condition='property("tracingOutputEnabled").equals("true")'>
+        <then>
+            <property name="PLATFORM_TRACING_PATTERN" value="[TraceId: %X{PtxId}, SpanId: %X{PspanId}, GMod: %X{GlModeHeader}, GHead:%X{LaneHeader}, GLane: %X{LaneMetadata}] "/>
+        </then>
+        <else>
+            <property name="PLATFORM_TRACING_PATTERN" value="&#x200B;"/>
+        </else>
+    </if>
+
+    <!-- 修正3：重新组织日志模式，避免未定义变量 -->
+    <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] ${CODE_LINE_PATTERN} - ${TRACING_PATTERN}${PLATFORM_TRACING_PATTERN}%mask(%msg){${maskPatterns}}%n"/>
+    <property name="FILE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN}"/>
+
+    <property name="LOG_FILE" value="${LOG_PATH:-${SPRING_HOME:-${user.home}}}/logs/${loggingFilename:-${SERVER_NAME:-${applicationName:-platform}}}.log"/>
+    <property name="LOGBACK_ROLLINGPOLICY_MAX_FILE_SIZE" value="500MB"/>
+    <property name="LOGBACK_ROLLINGPOLICY_MAX_HISTORY" value="120"/>
+
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+
+    <!-- 修正4：修复属性名不一致问题 -->
+    <appender class="ch.qos.logback.classic.AsyncAppender" name="ASYNC_FILE">
+        <queueSize>${asyncQueueSize}</queueSize>
+        <discardingThreshold>${asyncDiscardingThreshold}</discardingThreshold>
+        <includeCallerData>${asyncIncludeCallerData}</includeCallerData>  <!-- 修正属性名 -->
+        <appender-ref ref="FILE"/>
+    </appender>
+
+    <!-- 修正5：使用正确的条件判断 -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <!-- 使用条件属性来选择appender -->
+        <appender-ref ref="FILE" condition='property("asyncFileEnabled").equals("false")'/>
+        <appender-ref ref="ASYNC_FILE" condition='property("asyncFileEnabled").equals("true")'/>
+    </root>
+</included>
