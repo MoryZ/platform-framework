@@ -1,7 +1,4 @@
 <included>
-    <property name="CONSOLE_LOG_PATTERN" value="%d %-5level [%thread] %C:%line - %msg%n" />
-    <property name="FILE_LOG_PATTERN" value="%d %-5level [%thread] %C:%line - %msg%n" />
-
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
 
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">

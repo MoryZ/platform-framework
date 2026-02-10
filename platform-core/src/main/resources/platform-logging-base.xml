@@ -14,34 +14,27 @@
 
     <conversionRule conversionWord="mask" class="com.old.silence.core.logging.MaskingConverter"/>
 
+    <property name="CODE_LINE_PATTERN" value="%logger{36}"/>
+
     <if condition='property("codeLineOutputEnabled").equals("true")'>
         <then>
             <property name="CODE_LINE_PATTERN" value="%logger{36}:%line"/>
         </then>
-        <else>
-            <property name="CODE_LINE_PATTERN" value="%logger{36}"/>
-        </else>
     </if>
 
     <if condition='property("platformTracingOutputEnabled").equals("true")'>
         <then>
             <property name="TRACING_PATTERN" value="[TraceId: %X{platform.traceId}] "/>
         </then>
-        <else>
-            <property name="TRACING_PATTERN" value=""/>
-        </else>
     </if>
 
     <if condition='property("tracingOutputEnabled").equals("true")'>
         <then>
-            <property name="PLATFORM_TRACING_PATTERN" value="[TraceId: %X{PtxId}, SpanId: %X{PspanId}, GMod: %X{GlModeHeader}, GHead:%X{LaneHeader}, GLane: %X{LaneMetadata}] "/>
+            <property name="PLATFORM_TRACING_PATTERN" value="[TraceId: %X{traceId}, SpanId: %X{spanId}, GMod: %X{GlModeHeader}, GHead:%X{LaneHeader}, GLane: %X{LaneMetadata}] "/>
         </then>
-        <else>
-            <property name="PLATFORM_TRACING_PATTERN" value=""/>
-        </else>
     </if>
 
-    <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] ${CODE_LINE_PATTERN} - ${TRACING_PATTERN}${PLATFORM_TRACING_PATTERN}%mask(%msg){${maskPatterns}}%n"/>
+    <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] ${CODE_LINE_PATTERN} - ${TRACING_PATTERN:-}${PLATFORM_TRACING_PATTERN:-}%mask(%msg){${maskPatterns}}%n"/>
     <property name="FILE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN}"/>
 
     <property name="LOG_FILE" value="${LOG_PATH:-${SPRING_HOME:-${user.home}}}/logs/${loggingFilename:-${SERVER_NAME:-${applicationName:-platform}}}.log"/>
@@ -60,15 +53,19 @@
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
-
-        <if condition='property("asyncFileEnabled").equals("true")'>
-            <then>
-                <appender-ref ref="ASYNC_FILE"/>
-            </then>
-            <else>
-                <appender-ref ref="FILE"/>
-            </else>
-        </if>
     </root>
+
+    <if condition='property("asyncFileEnabled").equals("true")'>
+        <then>
+            <root level="INFO">
+                <appender-ref ref="ASYNC_FILE"/>
+            </root>
+        </then>
+        <else>
+            <root level="INFO">
+                <appender-ref ref="FILE"/>
+            </root>
+        </else>
+    </if>
 
 </included>
