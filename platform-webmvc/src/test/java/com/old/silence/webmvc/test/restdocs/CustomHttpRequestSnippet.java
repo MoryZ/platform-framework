@@ -1,34 +1,34 @@
 package com.old.silence.webmvc.test.restdocs;
 
 import java.util.Map;
+import java.util.Objects;
 
-import org.springframework.restdocs.cli.CommandFormatter;
-import org.springframework.restdocs.cli.CurlRequestSnippet;
+import org.springframework.restdocs.generate.RestDocumentationGenerator;
+import org.springframework.restdocs.http.HttpRequestSnippet;
 import org.springframework.restdocs.operation.Operation;
 
 /**
  * @author moryzang
  */
-public class CustomCurlRequestSnippet extends CurlRequestSnippet {
-
-
-    protected CustomCurlRequestSnippet(CommandFormatter commandFormatter) {
-        super(commandFormatter);
-    }
-
-    public CustomCurlRequestSnippet(Map<String, Object> attributes, CommandFormatter commandFormatter) {
-        super(attributes, commandFormatter);
-    }
-
+public class CustomHttpRequestSnippet extends HttpRequestSnippet {
     @Override
     protected Map<String, Object> createModel(Operation operation) {
-        Map<String, Object> model = super.createModel(operation);
-        model.put("url", getUrl(operation));
-        return model;
+        return super.createModel(operation);
     }
 
-    private String getUrl(Operation operation) {
-        var request = operation.getRequest();
-        request.get
+    private String removeQueryStringIfPresent(String urlTemplate) {
+        int index = urlTemplate.indexOf('?');
+        if (index == -1) {
+            return urlTemplate;
+        }
+        return urlTemplate.substring(0, index);
+    }
+
+    private String extractUrlTemplate(Operation operation) {
+        var urlTemplate = (String) operation.getAttributes()
+                .get(RestDocumentationGenerator.ATTRIBUTE_NAME_URL_TEMPLATE);
+        Objects.requireNonNull(urlTemplate, "urlTemplate not found. If you are using MockMvc did "
+        + "you use RestDocumentationRequestBuilders to build the request?");
+        return urlTemplate;
     }
 }

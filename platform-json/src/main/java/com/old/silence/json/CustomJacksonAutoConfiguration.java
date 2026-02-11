@@ -16,7 +16,7 @@ import com.old.silence.json.data.PageJacksonModule;
 import com.old.silence.json.data.TreeNodeJacksonModule;
 
 @AutoConfiguration(before = JacksonAutoConfiguration.class)
-public class CustomerJacksonAutoConfiguration {
+public class CustomJacksonAutoConfiguration {
 
     public static final String DEFAULT_JACKSON_OBJECT_MAPPER_BUILDER_CUSTOMIZER_BEAN_NAME = "defaultJacksonObjectMapperBuilderCustomizer";
 
