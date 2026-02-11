@@ -1,0 +1,12 @@
+<included>
+    <include resource="platform-logging-defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+    <logger name="org.springframework" level="INFO"/>
+
+    <root level="INFO">
+        <if condition='property("logging.console").equals("true")'>
+            <appender-ref ref="CONSOLE"/>
+        </if>
+    </root>
+</included>
