@@ -24,7 +24,7 @@ class MaskingConverterTest {
         assertThat(converter.isStarted()).isTrue();
 
         String maskedMessage = converter.transform(new LoggingEvent(), MESSAGE);
-        String expectedMaskedMessage = "My phone is 136****8536, email is '*********@gmail.com',id_card is 310*************022, bank_card is 6228***********1375, blablabla";
+        String expectedMaskedMessage = "My phone is 1361***8536, email is '*********@gmail.com',id_card is 31011**********2022, bank_card is 6228***********1375, blablabla";
         assertThat(maskedMessage).isEqualTo(expectedMaskedMessage);
     }
 
