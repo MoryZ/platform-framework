@@ -3,7 +3,7 @@ package com.old.silence.autoconfigure.minio;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 @ConfigurationProperties(MinioProperties.PREFIX)
 public class MinioProperties {

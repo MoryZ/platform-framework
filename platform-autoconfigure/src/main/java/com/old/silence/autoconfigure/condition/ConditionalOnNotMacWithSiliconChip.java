@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.condition.NoneNestedConditions;
 import org.springframework.context.annotation.Conditional;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 @Target({ ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

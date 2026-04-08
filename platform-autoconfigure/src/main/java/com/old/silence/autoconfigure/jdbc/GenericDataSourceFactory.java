@@ -5,7 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 class GenericDataSourceFactory implements PooledDataSourceFactory<DataSource> {
     @Override

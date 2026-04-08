@@ -1,7 +1,7 @@
 package com.old.silence.autoconfigure.minio;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 public class OssException extends RuntimeException {
 

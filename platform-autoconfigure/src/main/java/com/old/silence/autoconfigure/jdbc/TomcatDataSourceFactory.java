@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.jdbc.DatabaseDriver;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 class TomcatDataSourceFactory implements PooledDataSourceFactory<org.apache.tomcat.jdbc.pool.DataSource> {
     @Override

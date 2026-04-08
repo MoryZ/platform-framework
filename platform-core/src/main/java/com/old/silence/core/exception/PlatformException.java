@@ -11,7 +11,7 @@ import com.old.silence.core.context.ErrorCodedEnumMessageSourceResolvable;
 import com.old.silence.core.support.ErrorCoded;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public class PlatformException extends RuntimeException implements ErrorCoded {
 

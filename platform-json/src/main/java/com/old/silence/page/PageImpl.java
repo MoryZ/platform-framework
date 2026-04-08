@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public class PageImpl<T> implements IPage<T> {
     // 数据列表

@@ -9,7 +9,6 @@
     <relativePath />
   </parent>
   <artifactId>platform-framework</artifactId>
-  <version>2.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>platform-framework</name>
 

@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProc
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 @AutoConfiguration
 public class SchedulingAutoConfiguration {

@@ -3,7 +3,7 @@ package com.old.silence.core.support;
 import com.old.silence.core.exception.PlatformException;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public interface ErrorCoded {
 

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.core.GenericTypeResolver;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 interface PooledDataSourceFactory<T extends DataSource> {
 

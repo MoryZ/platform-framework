@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdScalarSerializer;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public class EnumValueSerializer extends StdScalarSerializer<EnumValue<?>> {
 

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public class MacWithSiliconChip extends SpringBootCondition {
 

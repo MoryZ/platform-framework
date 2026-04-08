@@ -1,7 +1,7 @@
 package com.old.silence.core.enums;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public interface DescribedEnumValue<T> extends EnumValue<T> {
 

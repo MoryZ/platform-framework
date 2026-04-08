@@ -49,7 +49,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 public class MinioService {
 

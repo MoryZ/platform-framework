@@ -1,7 +1,7 @@
 package com.old.silence.core.support;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public enum ValidationErrorCode implements ErrorCoded {
 

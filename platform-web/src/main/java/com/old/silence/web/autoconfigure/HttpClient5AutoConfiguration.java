@@ -40,7 +40,7 @@ import org.springframework.context.annotation.Configuration;
 import com.old.silence.core.security.SecurityUtils;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass({CloseableHttpClient.class})

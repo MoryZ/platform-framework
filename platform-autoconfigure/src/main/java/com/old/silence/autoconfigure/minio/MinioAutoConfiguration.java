@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 @AutoConfiguration
 @ConditionalOnClass(MinioService.class)

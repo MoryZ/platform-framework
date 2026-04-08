@@ -6,7 +6,7 @@ import java.util.Objects;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 public final class DynamicDataSourceIdentifierHolder {
 

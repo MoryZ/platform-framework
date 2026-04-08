@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ClassPathScanningCandidateComponen
 import org.springframework.core.type.filter.AssignableTypeFilter;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public class ClassPathEnumValueScanner extends ClassPathScanningCandidateComponentProvider {
 

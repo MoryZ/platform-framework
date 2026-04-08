@@ -3,7 +3,7 @@ package com.old.silence.autoconfigure.minio;
 import java.lang.reflect.UndeclaredThrowableException;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 public enum OssBucketType {
 

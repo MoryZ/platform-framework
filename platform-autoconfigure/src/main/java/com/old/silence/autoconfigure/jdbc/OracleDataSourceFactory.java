@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 class OracleDataSourceFactory implements PooledDataSourceFactory<PoolDataSourceImpl> {
     @Override

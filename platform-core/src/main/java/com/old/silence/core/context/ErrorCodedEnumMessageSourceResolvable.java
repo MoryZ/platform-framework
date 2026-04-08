@@ -5,7 +5,7 @@ import com.old.silence.core.exception.PlatformException;
 import com.old.silence.core.support.ErrorCoded;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public interface ErrorCodedEnumMessageSourceResolvable extends EnumMessageSourceResolvable, ErrorCoded {
 

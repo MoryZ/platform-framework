@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public class TreeDto {
     private BigInteger id;

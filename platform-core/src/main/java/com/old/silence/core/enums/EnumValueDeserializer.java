@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.deser.std.StdScalarDeserializer;
 import com.old.silence.core.enums.util.EnumValueUtils;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public class EnumValueDeserializer extends StdScalarDeserializer<Object> implements ContextualDeserializer {
 

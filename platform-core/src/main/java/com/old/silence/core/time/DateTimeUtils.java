@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public final class DateTimeUtils {
 

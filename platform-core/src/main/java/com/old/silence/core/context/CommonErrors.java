@@ -4,7 +4,7 @@ import com.old.silence.core.support.ErrorCoded;
 import com.old.silence.core.support.ValidationErrorCode;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public enum CommonErrors implements ErrorCodedEnumMessageSourceResolvable {
 

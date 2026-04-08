@@ -15,7 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.old.silence.core.jdbc.PlatformJdbcTemplate;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 
 @AutoConfiguration(before = JdbcTemplateAutoConfiguration.class, after = DataSourceAutoConfiguration.class)

@@ -3,7 +3,7 @@ package com.old.silence.autoconfigure.jdbc;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public class DynamicDataSourceRouter extends AbstractRoutingDataSource {
 

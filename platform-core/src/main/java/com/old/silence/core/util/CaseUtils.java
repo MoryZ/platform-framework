@@ -1,7 +1,7 @@
 package com.old.silence.core.util;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more

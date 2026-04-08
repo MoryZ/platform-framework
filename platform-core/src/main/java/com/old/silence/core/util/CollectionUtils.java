@@ -23,7 +23,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.lang.Nullable;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 public final class CollectionUtils {
 

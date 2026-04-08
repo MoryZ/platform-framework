@@ -11,7 +11,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 public class MinioTemplate {
 

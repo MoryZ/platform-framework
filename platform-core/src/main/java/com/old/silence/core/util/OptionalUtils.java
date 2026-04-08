@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.function.BinaryOperator;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public final class OptionalUtils {
 

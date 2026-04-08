@@ -15,7 +15,7 @@ import com.old.silence.core.enums.ClassPathEnumValueScanner;
 import com.old.silence.core.enums.EnumValue;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public final class EnumValueUtils {
 

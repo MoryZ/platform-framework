@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import com.zaxxer.hikari.HikariDataSource;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 class HikariDataSourceFactory implements PooledDataSourceFactory<HikariDataSource> {
     @Override

@@ -14,7 +14,7 @@ import org.springframework.util.CollectionUtils;
 import com.old.silence.core.util.CaseUtils;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public interface EnumMessageSourceResolvable extends MessageSourceResolvable, Serializable {
 

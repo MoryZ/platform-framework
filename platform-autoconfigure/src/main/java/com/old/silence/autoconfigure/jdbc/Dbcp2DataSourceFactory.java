@@ -4,7 +4,7 @@ package com.old.silence.autoconfigure.jdbc;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 class Dbcp2DataSourceFactory implements PooledDataSourceFactory<BasicDataSource> {
     @Override

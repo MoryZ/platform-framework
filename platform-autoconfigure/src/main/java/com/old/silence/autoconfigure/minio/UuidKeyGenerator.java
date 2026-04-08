@@ -3,7 +3,7 @@ package com.old.silence.autoconfigure.minio;
 import java.util.UUID;
 
 /**
- * @author MurrayZhang
+ * @author moryZhang
  */
 public class UuidKeyGenerator implements OssKeyGenerator {
     @Override

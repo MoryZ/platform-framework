@@ -1,7 +1,7 @@
 package com.old.silence.autoconfigure.jdbc;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 class GlobalDynamicDataSourceIdentifierHolderStrategy implements DynamicDataSourceIdentifierHolderStrategy {
 

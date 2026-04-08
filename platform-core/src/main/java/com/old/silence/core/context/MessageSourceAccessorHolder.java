@@ -3,7 +3,7 @@ package com.old.silence.core.context;
 import org.springframework.context.support.MessageSourceAccessor;
 
 /**
- * @author murrayZhang
+ * @author moryZhang
  */
 public class MessageSourceAccessorHolder {
 
